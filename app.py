@@ -14,11 +14,6 @@ st.write("🔍 Predict the CASA Ratio using trained Random Forest Regression mod
 # Replace these with your actual selected features
 feature_names = [f"feature_{i}" for i in range(100)]  # adjust to real feature names
 
-from sklearn.linear_model import LinearRegression
-
-model = LinearRegression()
-model.fit(X_train, y_train)  # Make sure this line runs before prediction
-prediction = model.predict(input_df)[0]
 
 input_data = {}
 for feature in feature_names:
@@ -29,3 +24,4 @@ if st.button("Predict CASA Ratio"):
     input_df = pd.DataFrame([input_data])
     prediction = model.predict(input_df)[0]
     st.success(f"Predicted CASA Ratio: {prediction:.4f}")
+
