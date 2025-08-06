@@ -1,21 +1,25 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import joblib
 
 # Load model
 model = joblib.load('model.pkl')
 
-st.title("CASA Ratio Prediction")
+# Title
+st.title("CASA Ratio Prediction App")
+st.write("🔍 Predict the CASA Ratio using trained Random Forest Regression model.")
 
-# Example inputs (replace with your actual feature names after RFE)
-features = ['feature_0', 'feature_1', 'feature_2', 'feature_3', 'feature_4',
-            'feature_5', 'feature_6', 'feature_7', 'feature_8', 'feature_9']
+# Input feature form (example with 10 features)
+# Replace these with your actual selected features
+feature_names = [f"feature_{i}" for i in range(100)]  # adjust to real feature names
 
-user_input = {}
-for feature in features:
-    user_input[feature] = st.number_input(f"Enter {feature}", step=0.1)
+input_data = {}
+for feature in feature_names:
+    input_data[feature] = st.number_input(f"Enter value for {feature}:", step=0.1)
 
-if st.button("Predict"):
-    input_df = pd.DataFrame([user_input])
+# When the button is clicked
+if st.button("Predict CASA Ratio"):
+    input_df = pd.DataFrame([input_data])
     prediction = model.predict(input_df)[0]
     st.success(f"Predicted CASA Ratio: {prediction:.4f}")
