@@ -12,7 +12,7 @@ st.write("🔍 Predict the CASA Ratio using trained Random Forest Regression mod
 
 # Input feature form (example with 10 features)
 # Replace these with your actual selected features
-feature_names = [f"feature_{i}" for i in range(100)]  # adjust to real feature names
+feature_names = [f"feature_{i}" for i in range(10)]  # adjust to real feature names
 
 
 input_data = {}
@@ -24,6 +24,7 @@ if st.button("Predict CASA Ratio"):
     input_df = pd.DataFrame([input_data])
     prediction = model.predict(input_df)[0]
     st.success(f"Predicted CASA Ratio: {prediction:.4f}")
+
 
 
 
